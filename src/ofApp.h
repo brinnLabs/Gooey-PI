@@ -11,6 +11,12 @@ enum States {
 
 };
 
+enum BoardSelect {
+	PIAB,
+	PIB2,
+	PIBP
+};
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -38,8 +44,8 @@ class ofApp : public ofBaseApp{
 		ofTrueTypeFont font;
 		ofTrueTypeFont pinMenuFont;
 
-		vector<pair<int, string>> inputPins;
-		vector<pair<int, string>> outputPins;
+		vector<pair<int, string> > inputPins;
+		vector<pair<int, string> > outputPins;
 
 		vector<ofxDropDownMenu *> outputMenu;
 		vector<ofxTextInputField *> outputDuration;
@@ -56,4 +62,6 @@ class ofApp : public ofBaseApp{
 		bool isInt(string s);
 
 		vector<int> errors;
+
+		BoardSelect board;
 };

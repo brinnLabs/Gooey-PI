@@ -10,6 +10,8 @@ void ofApp::setup(){
 		ofLogNotice("Main") << "unable to load baseSettings.xml check data/ folder";
 	}
 
+	board = PIAB;
+
 	font.loadFont(OF_TTF_SANS, 12);
 	pinMenuFont.loadFont(OF_TTF_SANS, 18);
 
@@ -88,16 +90,7 @@ void ofApp::setup(){
 	pinMenus[29].setPosition(925, 157);
 	pinMenus[30].setPosition(1225, 157);
 
-	pinMenus[4].setPosition(100, 611);
-	pinMenus[5].setPosition(100, 647);
-	pinMenus[12].setPosition(100, 683);
-	pinMenus[18].setPosition(100, 719);
-	pinMenus[25].setPosition(100, 755);
-
-	pinMenus[11].setPosition(630, 647);
-	pinMenus[15].setPosition(630, 719);
-	pinMenus[19].setPosition(630, 755);
-	pinMenus[20].setPosition(630, 791);
+	
 
 	if (piImage.getHeight() > ofGetScreenHeight()*.8){
 		float resizeRatio = (ofGetScreenHeight()*.8 + 20) / piImage.getHeight();
@@ -149,17 +142,17 @@ void ofApp::draw(){
 			}
 		}
 		else {
-			for (int i = 0; i < 27; i++){
+			for (int i = 1; i < 27; i++){
 				pinMenus[i].draw();
 			}
 		}
-		for (int i = 0; i < 31; i++){
+		for (int i = 1; i < 31; i++){
 			if (pinMenus[i].getToggled())
 				pinMenus[i].draw();
 		}
 		boardSelect.draw();
 	}
-		next.draw(ofGetWidth() - 100, ofGetHeight() - 40, 80, 25);
+		next.draw(ofGetWidth() - 100 / 826.0 * ofGetWidth(), ofGetHeight() - 40, 80, 25);
 		break;
 	case CONTROLASSIGN:
 		ofSetColor(0);
@@ -240,11 +233,13 @@ void ofApp::UIMenuSelection(const pair<string, int> & selection){
 		if (selection.first != currentBoard){
 			//we already know that the option selected cant be the same
 			//therefore it can't be B+ twice so we wont reload an image here
-			if (ofIsStringInString(selection.first, "+"))
+			if (ofIsStringInString(selection.first, "+")){
+				board = PIBP;
 				piImage.loadImage("B+Pinout.png");
-			else if (!ofIsStringInString(currentBoard, "Rev")) //we only reload this image if we change from the B+
+			}
+			else if (!ofIsStringInString(currentBoard, "Rev")) {//we only reload this image if we change from the B+
 				piImage.loadImage("B_Pinout.png");
-
+			}
 			if (ofIsStringInString(selection.first, "Rev")){
 				if (!ofIsStringInString(currentBoard, "Rev")){
 					pinMenus[1].setPosition(125, 157);
@@ -270,50 +265,67 @@ void ofApp::UIMenuSelection(const pair<string, int> & selection){
 						piImage.resize(piImage.getWidth()*resizeRatio, piImage.getHeight()*resizeRatio);
 					}
 				}
-				if (ofIsStringInString(selection.first, "Rev 2"))
+				if (ofIsStringInString(selection.first, "Rev 2")){
+					board = PIB2;
 					ofSetWindowShape(piImage.getWidth() + piImg2.getWidth() + 40, piImage.getHeight() + 20);
-				else
+				}
+				else{
+					board = PIAB;
 					ofSetWindowShape(piImage.getWidth() + 40, piImage.getHeight() + 20);
+				}
 			}
 			else{
 
-				pinMenus[1].setPosition(100, 143);
-				pinMenus[2].setPosition(100, 179);
-				pinMenus[3].setPosition(100, 215);
-				pinMenus[16].setPosition(100, 287);
-				pinMenus[26].setPosition(100, 323);
-				pinMenus[21].setPosition(100, 359);
-				pinMenus[9].setPosition(100, 431);
-				pinMenus[8].setPosition(100, 467);
-				pinMenus[10].setPosition(100, 503);
-
-				pinMenus[13].setPosition(630, 215);
-				pinMenus[14].setPosition(630, 251);
-				pinMenus[17].setPosition(630, 287);
-				pinMenus[22].setPosition(630, 359);
-				pinMenus[23].setPosition(630, 395);
-				pinMenus[24].setPosition(630, 467);
-				pinMenus[7].setPosition(630, 503);
-				pinMenus[6].setPosition(630, 539);
-
-				if (ofIsStringInString(selection.first, "+"))
+				if (ofIsStringInString(selection.first, "+")){
 					if (piImage.getHeight() > ofGetScreenHeight()*.9){
 						float resizeRatio = (ofGetScreenHeight()*.9 + 20) / piImage.getHeight();
 						piImage.resize(piImage.getWidth()*resizeRatio, piImage.getHeight()*resizeRatio);
 					}
-					else
-						if (piImage.getHeight() > ofGetScreenHeight()*.8){
-							float resizeRatio = (ofGetScreenHeight()*.8 + 20) / piImage.getHeight();
-							piImage.resize(piImage.getWidth()*resizeRatio, piImage.getHeight()*resizeRatio);
-						}
+				}
+				else{
+					if (piImage.getHeight() > ofGetScreenHeight()*.8){
+						float resizeRatio = (ofGetScreenHeight()*.8 + 20) / piImage.getHeight();
+						piImage.resize(piImage.getWidth()*resizeRatio, piImage.getHeight()*resizeRatio);
+					}
+				}
 				ofSetWindowShape(piImage.getWidth() + 40, piImage.getHeight() + 20);
+
+				pinMenus[1].setPosition(100 / 826.0 * ofGetWidth(), 143 / 850.0*ofGetHeight());
+				pinMenus[2].setPosition(100 / 826.0 * ofGetWidth(), 179 / 850.0*ofGetHeight());
+				pinMenus[3].setPosition(100 / 826.0 * ofGetWidth(), 215 / 850.0*ofGetHeight());
+				pinMenus[16].setPosition(100 / 826.0 * ofGetWidth(), 287 / 850.0*ofGetHeight());
+				pinMenus[26].setPosition(100 / 826.0 * ofGetWidth(), 323 / 850.0*ofGetHeight());
+				pinMenus[21].setPosition(100 / 826.0 * ofGetWidth(), 359 / 850.0*ofGetHeight());
+				pinMenus[9].setPosition(100 / 826.0 * ofGetWidth(), 431 / 850.0*ofGetHeight());
+				pinMenus[8].setPosition(100 / 826.0 * ofGetWidth(), 467 / 850.0*ofGetHeight());
+				pinMenus[10].setPosition(100 / 826.0 * ofGetWidth(), 503 / 850.0*ofGetHeight());
+
+				pinMenus[4].setPosition(100 / 826.0 * ofGetWidth(), 611 / 850.0*ofGetHeight());
+				pinMenus[5].setPosition(100 / 826.0 * ofGetWidth(), 647 / 850.0*ofGetHeight());
+				pinMenus[12].setPosition(100 / 826.0 * ofGetWidth(), 683 / 850.0*ofGetHeight());
+				pinMenus[18].setPosition(100 / 826.0 * ofGetWidth(), 719 / 850.0*ofGetHeight());
+				pinMenus[25].setPosition(100 / 826.0 * ofGetWidth(), 755 / 850.0*ofGetHeight());
+
+				pinMenus[13].setPosition(630 / 826.0 * ofGetWidth(), 215 / 850.0*ofGetHeight());
+				pinMenus[14].setPosition(630 / 826.0 * ofGetWidth(), 251 / 850.0*ofGetHeight());
+				pinMenus[17].setPosition(630 / 826.0 * ofGetWidth(), 287 / 850.0*ofGetHeight());
+				pinMenus[22].setPosition(630 / 826.0 * ofGetWidth(), 359 / 850.0*ofGetHeight());
+				pinMenus[23].setPosition(630 / 826.0 * ofGetWidth(), 395 / 850.0*ofGetHeight());
+				pinMenus[24].setPosition(630 / 826.0 * ofGetWidth(), 467 / 850.0*ofGetHeight());
+				pinMenus[7].setPosition(630 / 826.0 * ofGetWidth(), 503 / 850.0*ofGetHeight());
+				pinMenus[6].setPosition(630 / 826.0 * ofGetWidth(), 539 / 850.0*ofGetHeight());
+
+				pinMenus[11].setPosition(630 / 826.0 * ofGetWidth(), 647 / 850.0*ofGetHeight());
+				pinMenus[15].setPosition(630 / 826.0 * ofGetWidth(), 719 / 850.0*ofGetHeight());
+				pinMenus[19].setPosition(630 / 826.0 * ofGetWidth(), 755 / 850.0*ofGetHeight());
+				pinMenus[20].setPosition(630 / 826.0 * ofGetWidth(), 791 / 850.0*ofGetHeight());
 			}
 
 
 			currentBoard = selection.first;
 		}
 	}
-	else if (selection.second < 100){
+	else if (selection.second < 100 / 826.0 * ofGetWidth()){
 		pinMenus[selection.second - 1].setButtonTitle(selection.first);
 	}
 	else if (selection.second < 200) {
@@ -340,7 +352,7 @@ void ofApp::UIButPressed(const pair<bool, int> & state){
 				//XML.addTag("pin");
 				XML.addValue("pin", inputPins[i].first);
 				XML.addAttribute("pin", "type", (ofIsStringInString(inputPins[i].second, "Pullup") ? "PULLUP" : "PULLDOWN"), i);
-				
+
 			}
 			XML.popTag();
 			XML.pushTag("output");
@@ -349,7 +361,7 @@ void ofApp::UIButPressed(const pair<bool, int> & state){
 				//XML.addTag("pin");
 				XML.addValue("pin", outputPins[i].first);
 				XML.addAttribute("pin", "state", (ofIsStringInString(outputPins[i].second, "High") ? "HIGH" : "LOW"), i);
-				
+
 
 			}
 			XML.popTag();
@@ -406,7 +418,7 @@ void ofApp::UIButPressed(const pair<bool, int> & state){
 				ofxTextInputField * tempIn = new ofxTextInputField();
 				tempIn->setup();
 				tempIn->text = "500";
-				tempIn->bounds = ofRectangle(150, 20 + 40 * outputMenu.size(), 100, 30);
+				tempIn->bounds = ofRectangle(150, 20 + 40 * outputMenu.size(), 100 / 826.0 * ofGetWidth(), 30);
 				tempIn->setFont(font);
 				outputMenu.push_back(temp);
 				outputDuration.push_back(tempIn);
@@ -421,7 +433,10 @@ void ofApp::UIButPressed(const pair<bool, int> & state){
 		outputMenu.clear();
 		outputDuration.clear();
 		screenState = PINASSIGN;
-		ofSetWindowShape(piImage.getWidth() + 40, piImage.getHeight() + 20);
+		if(board == PIB2)
+			ofSetWindowShape(piImage.getWidth() + piImg2.getWidth() + 40, piImage.getHeight() + 20);
+		else
+			ofSetWindowShape(piImage.getWidth() + 40, piImage.getHeight() + 20); 
 	}
 	//state.first ? cout << "button " + ofToString(state.second) + " pressed down" << endl : cout << "button " + ofToString(state.second) + " depressed" << endl;
 }

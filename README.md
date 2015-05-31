@@ -15,6 +15,6 @@ to get this to run at boot put GooeyPI.py in the boot folder and edit rc.local w
 	
 and then replace the IP dummy script with
 
-   sudo python /boot/GooeyPI.py
+    sudo python /boot/GooeyPI.py
 
 Make sure to edit the settings file to the setup you would like
