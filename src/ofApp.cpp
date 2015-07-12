@@ -12,6 +12,8 @@ void ofApp::setup(){
 
 	board = PIAB;
 
+	ofColor c[19];
+
 	font.loadFont(OF_TTF_SANS, 12);
 	pinMenuFont.loadFont(OF_TTF_SANS, 18);
 
@@ -90,7 +92,7 @@ void ofApp::setup(){
 	pinMenus[29].setPosition(925, 157);
 	pinMenus[30].setPosition(1225, 157);
 
-	
+
 
 	if (piImage.getHeight() > ofGetScreenHeight()*.8){
 		float resizeRatio = (ofGetScreenHeight()*.8 + 20) / piImage.getHeight();
@@ -146,13 +148,13 @@ void ofApp::draw(){
 				pinMenus[i].draw();
 			}
 		}
+		boardSelect.draw();
+	}
+		next.draw(ofGetWidth() - 100 / 826.0 * ofGetWidth(), ofGetHeight() - 40, 80, 25);
 		for (int i = 1; i < 31; i++){
 			if (pinMenus[i].getToggled())
 				pinMenus[i].draw();
 		}
-		boardSelect.draw();
-	}
-		next.draw(ofGetWidth() - 100 / 826.0 * ofGetWidth(), ofGetHeight() - 40, 80, 25);
 		break;
 	case CONTROLASSIGN:
 		ofSetColor(0);
@@ -169,12 +171,12 @@ void ofApp::draw(){
 			}
 			ofPopStyle();
 		}
+		back.draw(20, ofGetHeight() - 40, 80, 25);
+		next.draw(ofGetWidth() - 140, ofGetHeight() - 40, 120, 25);
 		for (int i = 0; i < outputMenu.size(); i++){
 			if (outputMenu[i]->getToggled())
 				outputMenu[i]->draw();
 		}
-		back.draw(20, ofGetHeight() - 40, 80, 25);
-		next.draw(ofGetWidth() - 140, ofGetHeight() - 40, 120, 25);
 		break;
 	default:
 		break;
@@ -227,7 +229,8 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 }
 
 void ofApp::UIMenuSelection(const pair<string, int> & selection){
-	if (selection.second == 0){
+
+	if (selection.second == 0){ //board select
 		boardSelect.setButtonTitle(selection.first);
 		boardSelect.setWidth(font.getStringBoundingBox(selection.first, 0, 0).width + 20);
 		if (selection.first != currentBoard){
@@ -325,16 +328,21 @@ void ofApp::UIMenuSelection(const pair<string, int> & selection){
 			currentBoard = selection.first;
 		}
 	}
-	else if (selection.second < 100 / 826.0 * ofGetWidth()){
+	else if (selection.second < 100){
 		pinMenus[selection.second - 1].setButtonTitle(selection.first);
 	}
-	else if (selection.second < 200) {
+	else if (selection.second < 200 && outputMenu.size() > 0) {
 		outputMenu[selection.second - 100]->setButtonTitle(selection.first);
 	}
 
 }
 
 void ofApp::UIButPressed(const pair<bool, int> & state){
+
+	for (int i = 1; i < 31; i++){
+		if (pinMenus[i].getToggled())
+			return;
+	}
 
 	if (state.second == 1 && screenState == CONTROLASSIGN && state.first){
 		errors.clear();
@@ -433,10 +441,10 @@ void ofApp::UIButPressed(const pair<bool, int> & state){
 		outputMenu.clear();
 		outputDuration.clear();
 		screenState = PINASSIGN;
-		if(board == PIB2)
+		if (board == PIB2)
 			ofSetWindowShape(piImage.getWidth() + piImg2.getWidth() + 40, piImage.getHeight() + 20);
 		else
-			ofSetWindowShape(piImage.getWidth() + 40, piImage.getHeight() + 20); 
+			ofSetWindowShape(piImage.getWidth() + 40, piImage.getHeight() + 20);
 	}
 	//state.first ? cout << "button " + ofToString(state.second) + " pressed down" << endl : cout << "button " + ofToString(state.second) + " depressed" << endl;
 }
