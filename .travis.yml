@@ -8,10 +8,9 @@ services:
   - docker
 
 before_install:
-  - docker pull chukysoria/rpi-python-testing:armv7-py27
-  - docker run -d -p 127.0.0.1:80:4567 chukysoria/rpi-python-testing:armv7-py27 /bin/sh -c "cd /root/chukysoria; bundle exec foreman start;"
+  - docker pull benevolentcoders/rpi-python
   - docker ps -a
-  - docker run -d chukysoria/rpi-python-testing python -c 'print "Hello World"'
+  - docker run -d --name python benevolentcoders/rpi-python python -c 'print u"Hello World"'
 
 install:
   #normal libraries
