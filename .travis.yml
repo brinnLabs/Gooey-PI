@@ -2,6 +2,15 @@ language: python
 python:
   - "2.7"
   
+#https://github.com/BenevolentCoders/rpi-python
+#check out this to run a proper virtual environment maybe?
+services:
+  - docker
+
+before_install:
+  - curl -L https://github.com/BenevolentCoders/rpi-python
+  - docker run -d --name python benevolentcoders/rpi-python python -c 'print u"Hello World"'
+
 install:
   #normal libraries
   - pip install RPi.GPIO
