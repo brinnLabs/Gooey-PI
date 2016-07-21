@@ -10,6 +10,7 @@ services:
 before_install:
   - docker pull benevolentcoders/rpi-python
   - docker ps -a
+  - sudo service docker restart ; sleep 10 #from https://github.com/travis-ci/travis-ci/issues/4778
   - docker run -d --name python benevolentcoders/rpi-python python -c 'print u"Hello World"'
 
 install:
