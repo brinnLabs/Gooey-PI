@@ -8,8 +8,8 @@ services:
   - docker
 
 before_install:
-  - curl -L https://github.com/BenevolentCoders/rpi-python
-  - docker run -d --name python benevolentcoders/rpi-python python -c 'print u"Hello World"'
+  - docker pull hypriot/rpi-python
+  - docker run -d --name python benevolentcoders/rpi-python python -c 'print "Hello World"'
 
 install:
   #normal libraries
