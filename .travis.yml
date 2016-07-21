@@ -1,0 +1,12 @@
+language: python
+python:
+  - "2.7"
+  
+install:
+  #normal libraries
+  - pip install RPi.GPIO
+  
+# command to run tests
+script: 
+  #will fail cuz gpio only on raspi but whatever
+  - python GooeyPi.py
