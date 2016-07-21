@@ -9,6 +9,8 @@ services:
 
 before_install:
   - docker pull chukysoria/rpi-python-testing:armv7-py27
+  - docker run -d -p 127.0.0.1:80:4567 chukysoria/rpi-python-testing:armv7-py27 /bin/sh -c "cd /root/chukysoria; bundle exec foreman start;"
+  - docker ps -a
   - docker run -d chukysoria/rpi-python-testing python -c 'print "Hello World"'
 
 install:
