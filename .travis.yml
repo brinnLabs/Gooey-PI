@@ -8,10 +8,8 @@ services:
   - docker
 
 before_install:
- - docker build -t chukysoria/rpi-python-testing .
- - docker run -d chukysoria/rpi-python-testing python -c 'print "Hello World"'
-#  - docker pull chukysoria/rpi-python-testing
-#  - docker run -d chukysoria/rpi-python-testing python -c 'print "Hello World"'
+  - docker pull chukysoria/rpi-python-testing:armv7-py27
+  - docker run -d chukysoria/rpi-python-testing python -c 'print "Hello World"'
 
 install:
   #normal libraries
