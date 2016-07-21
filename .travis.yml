@@ -10,7 +10,7 @@ services:
   - docker
 
 before_install:
-  - docker pull docker pull hypriot/rpi-python
+  - docker pull hypriot/rpi-python
   - docker ps -a
   - sudo service docker restart ; sleep 10 #from https://github.com/travis-ci/travis-ci/issues/4778
   - docker run -d --name python hypriot/rpi-python python -c 'print "Hello World"'
