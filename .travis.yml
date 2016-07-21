@@ -13,7 +13,7 @@ before_install:
   - docker pull hypriot/rpi-python
   - docker ps -a
   - sudo service docker restart ; sleep 10 #from https://github.com/travis-ci/travis-ci/issues/4778
-  - docker run -d --name python hypriot/rpi-python python -c 'print "Hello World"'
+  - docker run hypriot/rpi-python python -c 'print "Hello World"'
 
 install:
   #normal libraries
