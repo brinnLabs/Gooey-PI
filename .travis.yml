@@ -1,25 +1,29 @@
-sudo: required
+# Tell Travis this is a Java project.
+language: java
+jdk: 
+ - oraclejdk8
 
-language: python
-python:
-  - "2.7"
-  
-#https://github.com/BenevolentCoders/rpi-python
-#check out this to run a proper virtual environment maybe?
-services:
-  - docker
-
+ # Tell Travis we don't need sudo,
+# so Travis uses containers.
+sudo: false
+ 
+# Make the gradle wrapper executable.
 before_install:
-  - docker pull hypriot/rpi-python
-  - docker ps -a
-  - sudo service docker restart ; sleep 10 #from https://github.com/travis-ci/travis-ci/issues/4778
-  - docker run hypriot/rpi-python python -c 'print "Hello World"'
+  - chmod +x gradlew
 
-install:
-  #normal libraries
-  - pip install RPi.GPIO
-  
-# command to run tests
-script: 
-  #will fail cuz gpio only on raspi but whatever
-  - python GooeyPi.py
+# Tell Travis to build the project.
+script:
+  - ./gradlew build -S -x test 
+
+# So the cache doesn't get repacked every time.
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+# Cache libs, as to improve speed.
+cache:
+  directories:
+    # The libs is up to debate...
+    #- ./libs
+    - $HOME/.gradle/caches
+    # But gradle is not.
+    - $HOME/.gradle/wrapper
