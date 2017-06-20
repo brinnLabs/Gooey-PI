@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="715.0" prefWidth="1013.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.bbcm.pidar.FXMLViewController">
+   <children>
+      <TabPane layoutY="25.0" prefHeight="688.0" prefWidth="1013.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Pin Setup">
+               <content>
+                  <SplitPane dividerPositions="0.18, 0.82" prefHeight="694.0" prefWidth="1013.0">
+                    <items>
+                      <AnchorPane prefHeight="561.0" prefWidth="141.0">
+                           <children>
+                              <Label layoutX="11.0" layoutY="14.0" prefHeight="6.0" prefWidth="115.0" text="Pin Declaration" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="pin2" layoutX="36.0" layoutY="91.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin3" layoutX="36.0" layoutY="124.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin4" layoutX="36.0" layoutY="158.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin17" layoutX="36.0" layoutY="212.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin27" layoutX="36.0" layoutY="246.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin22" layoutX="36.0" layoutY="279.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin10" layoutX="36.0" layoutY="338.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin9" layoutX="36.0" layoutY="371.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin11" layoutX="36.0" layoutY="406.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin5" layoutX="36.0" layoutY="464.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin6" layoutX="36.0" layoutY="498.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin13" layoutX="36.0" layoutY="531.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin19" layoutX="36.0" layoutY="565.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin26" layoutX="36.0" layoutY="598.0" prefHeight="0.0" prefWidth="115.0" />
+                              <Label layoutX="18.0" layoutY="95.0" text="02" />
+                              <Label layoutX="18.0" layoutY="128.0" text="03" />
+                              <Label layoutX="18.0" layoutY="162.0" text="04" />
+                              <Label layoutX="18.0" layoutY="212.0" text="17" />
+                              <Label layoutX="18.0" layoutY="246.0" text="27" />
+                              <Label layoutX="18.0" layoutY="279.0" text="22" />
+                              <Label layoutX="18.0" layoutY="341.0" text="10" />
+                              <Label layoutX="18.0" layoutY="374.0" text="09" />
+                              <Label layoutX="18.0" layoutY="409.0" text="11" />
+                              <Label layoutX="18.0" layoutY="468.0" text="05" />
+                              <Label layoutX="18.0" layoutY="502.0" text="06" />
+                              <Label layoutX="18.0" layoutY="535.0" text="13" />
+                              <Label layoutX="18.0" layoutY="569.0" text="19" />
+                              <Label layoutX="18.0" layoutY="602.0" text="26" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="634.0" prefWidth="655.0">
+                           <children>
+                              <ImageView fitHeight="702.0" fitWidth="655.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-43.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@../images/pin-layout.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane prefHeight="398.0" prefWidth="350.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="14.0" prefHeight="6.0" prefWidth="115.0" text="Pin Declaration" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="pin14" layoutX="31.0" layoutY="139.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin15" layoutX="31.0" layoutY="172.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin18" layoutX="31.0" layoutY="206.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin23" layoutX="31.0" layoutY="264.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin24" layoutX="31.0" layoutY="298.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin25" layoutX="31.0" layoutY="351.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin8" layoutX="31.0" layoutY="385.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin7" layoutX="31.0" layoutY="418.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin12" layoutX="31.0" layoutY="473.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin16" layoutX="31.0" layoutY="527.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin20" layoutX="31.0" layoutY="561.0" prefHeight="0.0" prefWidth="115.0" />
+                              <ChoiceBox fx:id="pin21" layoutX="31.0" layoutY="594.0" prefHeight="0.0" prefWidth="115.0" />
+                              <Label layoutX="13.0" layoutY="143.0" text="14" />
+                              <Label layoutX="13.0" layoutY="176.0" text="15" />
+                              <Label layoutX="13.0" layoutY="210.0" text="18" />
+                              <Label layoutX="13.0" layoutY="268.0" text="23" />
+                              <Label layoutX="13.0" layoutY="302.0" text="24" />
+                              <Label layoutX="13.0" layoutY="355.0" text="25" />
+                              <Label layoutX="13.0" layoutY="389.0" text="08" />
+                              <Label layoutX="13.0" layoutY="422.0" text="07" />
+                              <Label layoutX="13.0" layoutY="477.0" text="12" />
+                              <Label layoutX="13.0" layoutY="531.0" text="16" />
+                              <Label layoutX="13.0" layoutY="565.0" text="20" />
+                              <Label layoutX="13.0" layoutY="598.0" text="21" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </content>
+          </Tab>
+          <Tab text="Output Control">
+            <content>
+              <AnchorPane fx:id="output_panel" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="4.0" prefWidth="983.0" text="Setup output pins to be controlled by an input pin, the duration they stay high/low, or to set as a toggle">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="add_output" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" text="Add New Output" />
+                        <Label layoutX="14.0" layoutY="92.0" prefHeight="20.0" prefWidth="105.0" text="Output Pin" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="180.0" layoutY="92.0" prefHeight="20.0" prefWidth="105.0" text="Input Trigger Pin" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="345.0" layoutY="92.0" prefHeight="20.0" prefWidth="105.0" text="Duration" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="508.0" layoutY="92.0" prefHeight="20.0" prefWidth="105.0" text="Does Toggle" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Setup Audio">
+              <content>
+                <AnchorPane fx:id="audio_panel" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="982.0" text="Setup the audio by assigning an input pin to a song or playlist, and a stop pin">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="add_audio" layoutX="14.0" layoutY="49.0" mnemonicParsing="false" text="Add New Audio" />
+                        <Label layoutX="14.0" layoutY="92.0" text="Input Pin">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="180.0" layoutY="92.0" prefHeight="20.0" prefWidth="86.0" text="Song/Playlist">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="345.0" layoutY="92.0" prefHeight="20.0" prefWidth="86.0" text="File">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="508.0" layoutY="92.0" prefHeight="20.0" prefWidth="86.0" text="Pick FIle">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="680.0" layoutY="92.0" prefHeight="20.0" prefWidth="86.0" text="Stop Pin">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <MenuBar prefHeight="25.0" prefWidth="1013.0">
+        <menus>
+          <Menu fx:id="file_menu" mnemonicParsing="false" text="File" />
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
